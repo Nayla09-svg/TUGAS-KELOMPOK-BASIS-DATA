@@ -73,7 +73,6 @@ INSERT INTO kategori (nama_kategori, deskripsi) VALUES
 ('LAMPU_JALAN', 'Kerusakan atau matinya lampu penerangan jalan'),
 ('LAINNYA', 'Kategori lain yang tidak masuk kategori di atas');
 
-
 -- Insert pengguna contoh
 INSERT INTO pengguna (nama_pengguna, email, password, nomor_hp, jenis_akun) VALUES
 ('warga1', 'warga1@bintaro.com', 'password123', '081234567890', 'WARGA'),
@@ -85,10 +84,12 @@ INSERT INTO pengguna (nama_pengguna, email, password, nomor_hp, jenis_akun) VALU
 INSERT INTO aduan (kode_pengguna, kode_kategori, judul_aduan, deskripsi, lokasi) VALUES
 (1, 1, 'Sampah Menumpuk di Jalan', 'Sampah sudah 3 hari tidak diangkut di depan rumah saya', 'Jl. Bintaro Sektor 1 Blok A'),
 (1, 2, 'Jalan Berlubang', 'Ada lubang besar di jalan yang membahayakan pengendara', 'Jl. Bintaro Utama Sektor 3');
+
 -- Insert riwayat status
 INSERT INTO riwayat_status (kode_aduan, status_baru, keterangan) VALUES
 (1, 'BARU', 'Aduan baru dibuat oleh warga'),
 (2, 'BARU', 'Aduan baru dibuat oleh warga');
+
 -- Insert contoh komentar
 INSERT INTO komentar (kode_aduan, kode_pengguna, isi_komentar) VALUES
 (1, 3, 'Terima kasih atas laporannya, akan segera ditindaklanjuti'),
@@ -119,6 +120,7 @@ JOIN kategori k ON a.kode_kategori = k.kode_kategori
 LEFT JOIN lampiran l ON a.kode_aduan = l.kode_aduan
 GROUP BY a.kode_aduan
 ORDER BY a.tanggal_submit DESC;
+
 -- 2. Lihat foto/video dari suatu aduan
 SELECT 
     l.nama_file,
